@@ -3,8 +3,10 @@ import axios from 'axios';
 const user = JSON.parse(localStorage.getItem('user'));
 const TOKEN = user ? user.accessToken : '';
 
+let baseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
 const API = axios.create({
-  baseURL:'http://localhost:8000',
+  baseURL: baseUrl,
 });
 
 API.interceptors.request.use((req) => {
